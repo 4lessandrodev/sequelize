@@ -178,7 +178,9 @@ Usuario.findAll().then(
 
 
 *Para rodar o teste basta executar
+
 *node testes/usuarioTeste.js
 
 Referências de código padrão:
+
 *[CODIGO]https://github.com/ALESSANDROLMENEZES/sequelize
