@@ -3,15 +3,17 @@
 
 ## Siga: 
 
-*Iniciar o projeto express-generator na pasta local
+* Iniciar o projeto express-generator na pasta local
 
 express nome_do_projeto --ejs
 ```
-*Instalar as dependências padrão do express generator
+
+* Instalar as dependências padrão do express generator
 
 npm install
 ``` 
-*Agora instalar as dependências que iremos utilizar
+
+* Agora instalar as dependências que iremos utilizar
 
 npm install express mysql2 sequelize dotenv
 ```
@@ -19,7 +21,8 @@ npm install express mysql2 sequelize dotenv
 npm install nodemon sequelize-cli -D
 ```
 
-*criar arquivos na raiz do projeto .env e .gitignore
+* criar arquivos na raiz do projeto .env e .gitignore
+
 no arquivo .env colocar as variáveis com os valores de acordo com seu ambiente Dev
 
 ```
@@ -30,14 +33,14 @@ DB_HOST=127.0.0.1
 DB_PORT=3306
 ```
 
-*No arquivo .gitignore ignorar os seguintes arquivos 
+* No arquivo .gitignore ignorar os seguintes arquivos 
 
 ```
 /node_modules 
 .env
 ```
 
-*Criar as seguintes pastas na raiz do projeto
+* Criar as seguintes pastas na raiz do projeto
 
 ```
 models
@@ -45,7 +48,7 @@ controllers
 config
 ```
 
-*dentro da pasta config criar o arquivo database.js e colocar o código de conexão do banco 
+* dentro da pasta config criar o arquivo database.js e colocar o código de conexão do banco 
 
 ```
 require('dotenv').config()
@@ -61,11 +64,11 @@ dialect:"mysql"
 }
 ```
 
-*Dentro da pasta models criar um arquivo chamado index.js
-*Colocar as configurações conforme abaixo:
-*Ou você pode usar o comando: npx sequelize init:models
+* Dentro da pasta models criar um arquivo chamado index.js
+* Colocar as configurações conforme abaixo:
+* Ou você pode usar o comando: npx sequelize init:models
 > Obs.: Se você utilizar o comando lembrar de corrigir as linhas "const config = require('../config/database');" e 
-*"sequelize = new Sequelize(process.env[config.use_env_variable], config);" Tirando o "[env]" e passando o caminho de sua conexão com banco de dados 
+* "sequelize = new Sequelize(process.env[config.use_env_variable], config);" Tirando o "[env]" e passando o caminho de sua conexão com banco de dados 
 
 ```
 'use strict';
@@ -105,7 +108,7 @@ module.exports = db;
 ```
 
 
-*Na Raiz do projeto criar o arquivo .sequelizerc e colocar o seguinte código 
+* Na Raiz do projeto criar o arquivo .sequelizerc e colocar o seguinte código 
 
 ```
 const path = require("path");
@@ -116,9 +119,9 @@ module.exports = {
 ```
 
 
-*Dentro de models criar um arquivo js
+* Dentro de models criar um arquivo js
 > Em nosso exemplo vamos criar um arquivo de Usuario.js
-*Dentro de Usuario.js usar o código abaixo como modelo 
+* Dentro de Usuario.js usar o código abaixo como modelo 
 > Lembrando que devemos ter essa tabela em nosso banco de dados
 ------------------------------------------------------------------------------------------
 
@@ -162,9 +165,9 @@ module.exports = Usuario;
 ```
 
 
-*Para rodar o teste 
-*Criar uma pasta na raiz do projeto chamada testes;
-*Dentro desta criar um arquivo chamado usuarioTeste.js e colocar o seguinte código
+* Para rodar o teste 
+* Criar uma pasta na raiz do projeto chamada testes;
+* Dentro desta criar um arquivo chamado usuarioTeste.js e colocar o seguinte código
 
 ```
 const { sequelize, Usuario } = require('../models');
@@ -177,10 +180,10 @@ Usuario.findAll().then(
 ```
 
 
-*Para rodar o teste basta executar
+* Para rodar o teste basta executar
 
-*node testes/usuarioTeste.js
+* node testes/usuarioTeste.js
 
 Referências de código padrão:
 
-*[CODIGO]https://github.com/ALESSANDROLMENEZES/sequelize
+* [CODIGO]https://github.com/ALESSANDROLMENEZES/sequelize
