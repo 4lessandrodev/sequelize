@@ -70,7 +70,12 @@ dialect:"mysql"
 
 * Dentro da pasta models criar um arquivo chamado index.js
 * Colocar as configurações conforme abaixo:
-* Ou você pode usar o comando: npx sequelize init:models
+* Ou você pode usar o comando: 
+
+```
+npx sequelize init:models
+```
+
 > Obs.: Se você utilizar o comando lembrar de corrigir as linhas "const config = require('../config/database');" e 
 > "sequelize = new Sequelize(process.env[config.use_env_variable], config);" Tirando o "[env]" e passando o caminho de sua conexão com banco de dados 
 
