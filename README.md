@@ -5,19 +5,23 @@
 
 * Iniciar o projeto express-generator na pasta local
 
+```
 express nome_do_projeto --ejs
 ```
 
 * Instalar as dependências padrão do express generator
 
+```
 npm install
 ``` 
 
 * Agora instalar as dependências que iremos utilizar
 
+```
 npm install express mysql2 sequelize dotenv
 ```
 
+```
 npm install nodemon sequelize-cli -D
 ```
 
