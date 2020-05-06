@@ -1,7 +1,7 @@
 # Criando um projeto padrão com sequelize
 ## Passos
 
-###### Siga: 
+## Siga: 
 
 *Iniciar o projeto express-generator na pasta local
 
@@ -15,8 +15,10 @@ npm install
 
 npm install express mysql2 sequelize dotenv
 ```
+
 npm install nodemon sequelize-cli -D
 ```
+
 *criar arquivos na raiz do projeto .env e .gitignore
 no arquivo .env colocar as variáveis com os valores de acordo com seu ambiente Dev
 
@@ -30,37 +32,32 @@ DB_PORT=3306
 
 *No arquivo .gitignore ignorar os seguintes arquivos 
 
-/node_modules 
 ```
+/node_modules 
 .env
 ```
 
 *Criar as seguintes pastas na raiz do projeto
 
+```
 models
-```
 controllers
-```
 config
 ```
 
 *dentro da pasta config criar o arquivo database.js e colocar o código de conexão do banco 
 
+```
 require('dotenv').config()
 ```
 
-module.exports = 
 ```
-    username:process.env.DB_USER,
-```
-    password:process.env.DB_PASS,
-```
-    database:process.env.DB_NAME,
-```
-    host:process.env.DB_HOST,
-```
-    dialect:"mysql"
-```
+module.exports = {
+username:process.env.DB_USER,
+password:process.env.DB_PASS,
+database:process.env.DB_NAME,
+host:process.env.DB_HOST,
+dialect:"mysql"
 }
 ```
 
@@ -70,86 +67,51 @@ module.exports =
 > Obs.: Se você utilizar o comando lembrar de corrigir as linhas "const config = require('../config/database');" e 
 *"sequelize = new Sequelize(process.env[config.use_env_variable], config);" Tirando o "[env]" e passando o caminho de sua conexão com banco de dados 
 
+```
 'use strict';
-```
-
 const fs = require('fs');
-```
 const path = require('path');
-```
 const Sequelize = require('sequelize');
-```
 const basename = path.basename(__filename);
-```
 const env = process.env.NODE_ENV || 'development';
-```
 const config = require('../config/database');
-```
 const db = {};
 ```
 
+```
 let sequelize;
-```
 if (config.use_env_variable) {
-```
     sequelize = new Sequelize(process.env[config.use_env_variable], config);
-```
 } else {
-```
     sequelize = new Sequelize(config.database, config.username, config.password, config);
-```
 }
-```
-
 fs
-```
     .readdirSync(__dirname)
-```
     .filter(file => {
-```
         return (file.indexOf('.') !== 0) && (file !== basename) && (file.slice(-3) === '.js');
-```
     })
-```
     .forEach(file => {
-```
         const model = sequelize['import'](path.join(__dirname, file));
-```
         db[model.name] = model;
-```
     });
-```
-
 Object.keys(db).forEach(modelName => {
-```
     if (db[modelName].associate) {
-```
         db[modelName].associate(db);
-```
     }
-```
 });
-```
-
 db.sequelize = sequelize;
-```
 db.Sequelize = Sequelize;
-```
-
 module.exports = db;
 ```
 
 
 *Na Raiz do projeto criar o arquivo .sequelizerc e colocar o seguinte código 
 
+```
 const path = require("path");
-```
 module.exports = {
-```
     config: path.resolve("config","database.js"),
-```
     models: path.resolve("models"),
-```
 }
 ```
 
@@ -161,77 +123,41 @@ module.exports = {
 ------------------------------------------------------------------------------------------
 
 
-const Usuario = (sequelize, DataTypes) => {
 ```
-    let usuario = sequelize.define(
-```        
+const Usuario = (sequelize, DataTypes) => {
+    let usuario = sequelize.define(        
         'Usuario',
-```        
         {
-```            
-            id_usuario: {
-```                
+            id_usuario: {          
                 type: DataTypes.INTEGER,
-```                
                 primaryKey: true,
-```                
                 autoIncrement: true,
-```                
                 allowNull: true
-```                
             },
-```            
-            nome: {
-```                
+            nome: {     
                 type: DataTypes.STRING,
-```                
                 allowNull: true
-```                
             },
-```            
-            email: {
-```                
+            email: {     
                 type: DataTypes.STRING,
-```                
                 allowNull: true
-```                
             },
-```            
-            senha: {
-```                
+            senha: {     
                 type: DataTypes.STRING,
-```                
                 allowNull: true
-```                
             }
-```            
         },
-```        
-        {
-```            
-            tableName: "usuario",
-```            
+        {     
+            tableName: "usuario",      
             timestamps: false
-```            
-        }
-```        
-    )
-```    
-
-
-    usuario.associate = (models) => {
-```        
+        }   
+    )  
+    usuario.associate = (models) => {    
         //usuario.hasMany(models.Endereco, { foreignKey: 'fk_usuarios', as: 'enderecos' });
         //usuario.hasMany(models.Pedido, { foreignKey: 'fk_usuarios', as: 'pedidos' });
     };
-```    
-
 return usuario;
-```
-
 }
-```
-
 module.exports = Usuario;
 ```
 
@@ -240,19 +166,13 @@ module.exports = Usuario;
 *Criar uma pasta na raiz do projeto chamada testes;
 *Dentro desta criar um arquivo chamado usuarioTeste.js e colocar o seguinte código
 
+```
 const { sequelize, Usuario } = require('../models');
-```
-
 Usuario.findAll().then(
-```
     data => {
-```        
         console.log(data.map( u => u.toJSON()));
-```        
         sequelize.close();
-```        
     }
-```    
 )
 ```
 
