@@ -4,12 +4,15 @@
 ###### Siga: 
 
 *Iniciar o projeto express-generator na pasta local
+
 express nome_do_projeto --ejs
 ```
 *Instalar as dependências padrão do express generator
+
 npm install
 ``` 
 *Agora instalar as dependências que iremos utilizar
+
 npm install express mysql2 sequelize dotenv
 ```
 npm install nodemon sequelize-cli -D
@@ -17,14 +20,11 @@ npm install nodemon sequelize-cli -D
 *criar arquivos na raiz do projeto .env e .gitignore
 no arquivo .env colocar as variáveis com os valores de acordo com seu ambiente Dev
 
+```
 DB_USER=
-```
 DB_PASS=
-```
 DB_NAME=
-```
 DB_HOST=127.0.0.1
-```
 DB_PORT=3306
 ```
 
@@ -261,4 +261,4 @@ Usuario.findAll().then(
 *node testes/usuarioTeste.js
 
 Referências de código padrão:
-*[CODIGO]https://github.com/ALESSANDROLMENEZES/sequelize/tree/73080f7b67e18711805f97ba005c702096d408be 
+*[CODIGO]https://github.com/ALESSANDROLMENEZES/sequelize
